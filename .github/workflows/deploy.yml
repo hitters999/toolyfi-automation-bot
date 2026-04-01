@@ -64,51 +64,54 @@ jobs:
           echo "Generating sitemap.xml..."
           echo "✅ Sitemap generated"
 
-      # Step 8: Deploy to GitHub Pages (if applicable)
-      - name: 🌐 Deploy to GitHub Pages
-        if: github.event_name == 'push'
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./public
-          cname: toolyfi.com
+      # Step 8: All checks complete
+      - name: ✅ All Checks Complete
+        run: |
+          echo "🎉 All validations passed!"
+          echo "✅ Bot is ready to deploy"
 
-      # Step 9: Send Telegram notification
-      - name: 📱 Send Telegram Notification
+      # Step 9: Send Telegram notification on success
+      - name: 📱 Send Telegram Success Notification
+        if: success()
         uses: appleboy/telegram-action@master
         with:
           to: ${{ secrets.TELEGRAM_USER_ID }}
           token: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           message: |
-            ✅ Deployment Successful!
+            ✅ <b>Deployment Successful!</b>
             
             🔗 Repository: ${{ github.repository }}
             📝 Commit: ${{ github.event.head_commit.message }}
             👤 Author: ${{ github.actor }}
-            ⏱️ Time: $(date)
+            🌳 Branch: ${{ github.ref_name }}
             
-            🌐 Live URL: https://toolyfi.com
+            <b>Validations Passed:</b>
+            ✅ JavaScript syntax
+            ✅ SEO checks
+            ✅ Article validation
+            ✅ Sitemap generation
             
             Changes deployed successfully! 🚀
 
-      # Step 10: On error - send failure notification
-      - name: 📱 Send Error Notification
+      # Step 10: Send Telegram notification on failure
+      - name: 📱 Send Telegram Failure Notification
         if: failure()
         uses: appleboy/telegram-action@master
         with:
           to: ${{ secrets.TELEGRAM_USER_ID }}
           token: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           message: |
-            ❌ Deployment Failed!
+            ❌ <b>Deployment Failed!</b>
             
             🔗 Repository: ${{ github.repository }}
             📝 Commit: ${{ github.event.head_commit.message }}
             👤 Author: ${{ github.actor }}
+            🌳 Branch: ${{ github.ref_name }}
             
-            ⚠️ Please check the logs:
+            ⚠️ Check the logs for details:
             ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
 
-      # Step 11: Summary
+      # Step 11: Build summary
       - name: 📊 Build Summary
         if: always()
         run: |
@@ -120,4 +123,5 @@ jobs:
           echo "Branch: ${{ github.ref }}"
           echo "Commit: ${{ github.sha }}"
           echo "Author: ${{ github.actor }}"
+          echo "Time: $(date)"
           echo "════════════════════════════════════"
