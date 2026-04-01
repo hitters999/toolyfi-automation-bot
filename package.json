@@ -1,0 +1,42 @@
+{
+  "name": "toolyfi-automation-bot",
+  "version": "1.0.0",
+  "description": "Free GitHub Actions + Telegram Bot for website automation, SEO checking, and deployment",
+  "main": "bot.js",
+  "scripts": {
+    "start": "node bot.js",
+    "dev": "nodemon bot.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "github-actions",
+    "telegram-bot",
+    "automation",
+    "seo",
+    "deployment",
+    "toolyfi"
+  ],
+  "author": "Umar (hitters999)",
+  "license": "MIT",
+  "dependencies": {
+    "dotenv": "^16.3.1",
+    "node-telegram-bot-api": "^0.63.0",
+    "axios": "^1.6.2",
+    "cheerio": "^1.0.0-rc.12",
+    "fs-extra": "^11.2.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.2"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/hitters999/toolyfi-automation-bot.git"
+  },
+  "bugs": {
+    "url": "https://github.com/hitters999/toolyfi-automation-bot/issues"
+  },
+  "homepage": "https://github.com/hitters999/toolyfi-automation-bot#readme"
+}
