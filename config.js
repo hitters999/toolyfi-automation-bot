@@ -50,7 +50,7 @@ module.exports = {
   ERROR_CONFIG: {
     LOG_ERRORS: true,
     NOTIFY_ON_ERROR: true,
-    ERROR_THRESHOLD: 3, // Notify after 3 errors
+    ERROR_THRESHOLD: 3,
     RETENTION_DAYS: 7,
   },
   
@@ -61,7 +61,7 @@ module.exports = {
     NOTIFY_ON_SEO_ISSUE: true,
     NOTIFY_ON_ARTICLE_PUBLISH: true,
     DAILY_REPORT: true,
-    DAILY_REPORT_TIME: '09:00', // 9 AM
+    DAILY_REPORT_TIME: '09:00',
   },
   
   // API Endpoints
@@ -76,8 +76,8 @@ module.exports = {
   
   // Security
   SECURITY: {
-    RATE_LIMIT: 10, // requests per minute
-    TIMEOUT: 30000, // 30 seconds
+    RATE_LIMIT: 10,
+    TIMEOUT: 30000,
     VERIFY_SSL: true,
   },
 };
