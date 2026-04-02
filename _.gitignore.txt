@@ -36,5 +36,4 @@ build/
 
 # OS files
 .DS_Store
-.gitignore.swp
 Thumbs.db
